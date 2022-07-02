@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Создание  записи{% endblock %}
+{% block content %}
+
+<form action="{% url "create" %}" method="post">
+    {% csrf_token %}
+    <label>Автор:</label><br/>
+    <input type="text" name="author"/><br/>
+    <label>Email:</label><br/>
+    <input type="email" name="author_mail"/><br/>
+    <label>Запись:</label><br/>
+    <textarea name="content"></textarea><br/>
+    <br/>
+    <input type="submit" value="Добавить"/>
+</form>
+<a href="{% url "index" %}">На главную</a>
+
+{% endblock %}

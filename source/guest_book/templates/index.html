@@ -4,18 +4,20 @@
 {% block content %}
         <h1>Записи клиентов</h1>
     {% for entry in entries %}
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{ entry.author }}({{ entry.author_mail }})</h5>
-            <p class="card-text">{{ entry.content}} <br/> {{ entry.created_at }}</p>
-            <a href="#" class="btn btn-secondary">Редактировать</a>
-              <a href="{% url "delete" entry.pk %}" class="btn btn-secondary">Удалить</a>
+        {% if entry.status == "active" %}
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{ entry.author }}({{ entry.author_mail }})</h5>
+                <p class="card-text">{{ entry.content}}<br/></p>
+                <a href="{% url "update" entry.pk %}" class="btn btn-secondary">Редактировать</a>
+                  <a href="{% url "delete" entry.pk %}" class="btn btn-secondary">Удалить</a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
         <p></p>
+        {% endif %}
   {% endfor %}
 {% endblock %}

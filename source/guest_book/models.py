@@ -4,9 +4,9 @@ STATUS_CHOICES = [('active', 'Активно'), ('blocked', 'Заблокиро�
 
 
 class Entry(models.Model):
-    author = models.CharField(max_length=50, verbose_name="Автор", default="Unknown")
-    author_mail = models.CharField(max_length=50, verbose_name="Почта")
-    content = models.TextField(max_length=3000, verbose_name="Контент")
+    author = models.CharField(max_length=50, null=False, blank=False, verbose_name="Автор", default="Unknown")
+    author_mail = models.CharField(max_length=50, null=False, blank=False, verbose_name="Почта")
+    content = models.TextField(max_length=3000, null=False, blank=False,  verbose_name="Контент")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата редактирования")
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=STATUS_CHOICES[0][0],
